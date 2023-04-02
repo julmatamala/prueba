@@ -47,60 +47,120 @@
         </div>
       </nav>
     <div class="container">
-        <form class="row g-3 mt-3">
-            
+        <form class="row g-3 mt-3 needs-validation" novalidate>
+
             <h1>Registro </h1>
  
             <div class="col-6">
                 <label for="nameInput" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nameInput" placeholder="Escribe tu Nombre"> 
+                <input type="text" class="form-control" id="nameInput" placeholder="Escribe tu Nombre" required> 
+                <div class="valid-feedback">
+                   Ok! 
+                </div>
+                <div class="invalid-feedback">
+                  Es necesario llenar el campo  
+                </div>
             </div>
  
             <div class="col-6">
                 <label for="lnameInput" class="form-label">Apellido</label>
-                <input type="text" class="form-control" id="lnameInput" placeholder="Escribe tu Apellido"> 
+                <input type="text" class="form-control" id="lnameInput" placeholder="Escribe tu Apellido" required>
+                <div class="valid-feedback">
+                    Ok! 
+                 </div>
+                 <div class="invalid-feedback">
+                   Es necesario llenar el campo  
+                 </div> 
             </div>
  
             <div class="col-6">
                 <label for="emailInput" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="emailInput" placeholder="Escribe tu E-mail"> 
+                <input type="email" class="form-control" id="emailInput" placeholder="Escribe tu E-mail" required>
+                <div class="valid-feedback">
+                    Ok! 
+                 </div>
+                 <div class="invalid-feedback">
+                   debe llenar con email valido mail@example.com
+                 </div> 
             </div>
  
             <div class="col-6">
                 <label for="inputrut" class="form-label">Rut:</label>
-                <input type="text" class="form-control" id="inputrut" placeholder="Escribe tu rut"> 
+                <input type="text" class="form-control" id="inputrut" placeholder="Escribe tu rut" required>
+                <div class="valid-feedback">
+                    Ok! 
+                 </div>
+                 <div class="invalid-feedback">
+                   Es necesario llenar el campo  
+                 </div> 
             </div>
  
             <div class="col-6">
                 <label for="inputPas" class="form-label">contraseña</label>
-                <input type="password" class="form-control" id="inputPas" placeholder="Escribe tu contraseña"> 
+                <input type="password" class="form-control" id="inputPas" placeholder="Escribe tu contraseña" required> 
+                <div class="valid-feedback">
+                    Ok! 
+                 </div>
+                 <div class="invalid-feedback">
+                   Es necesario llenar el campo  
+                 </div>
             </div>
  
             <div class="col-6">
                 <label for="inputrePas" class="form-label"> Repita contraseña</label>
-                <input type="password" class="form-control" id="inputrePas" placeholder="Reescribe tu contraseña"> 
+                <input type="password" class="form-control" id="inputrePas" placeholder="Reescribe tu contraseña" required>
+                <div class="valid-feedback">
+                    Ok! 
+                 </div>
+                 <div class="invalid-feedback">
+                   Es necesario llenar el campo  
+                 </div> 
             </div>
  
  
             <div class="col-4">
                 <label for="inputAdress" class="form-label">Dirección</label>
-                <input type="text" class="form-control" id="inputAdress" placeholder="Ingrese su Dirección"> 
+                <input type="text" class="form-control" id="inputAdress" placeholder="Ingrese su Dirección" required>
+                <div class="valid-feedback">
+                    Ok! 
+                 </div>
+                 <div class="invalid-feedback">
+                   Es necesario llenar el campo  
+                 </div> 
             </div>
  
             <div class="col-4">
                 <label for="inputRegión" class="form-label">Región</label>
-                <input type="text" class="form-control" id="inputRegión" placeholder="Ingrese su Región"> 
+                <input type="text" class="form-control" id="inputRegión" placeholder="Ingrese su Región" required>
+                <div class="valid-feedback">
+                    Ok! 
+                 </div>
+                 <div class="invalid-feedback">
+                   Es necesario llenar el campo  
+                 </div> 
             </div>
  
  
             <div class="col-4">
                 <label for="inputCiudad" class="form-label">Ciudad</label>
-                <input type="text" class="form-control" id="inputCiudad" placeholder="Ingrese su Ciudad"> 
+                <input type="text" class="form-control" id="inputCiudad" placeholder="Ingrese su Ciudad" required>
+                <div class="valid-feedback">
+                    Ok! 
+                 </div>
+                 <div class="invalid-feedback">
+                   Es necesario llenar el campo  
+                 </div> 
             </div>
  
             <div class="col-4">
                 <label for="inputComuna" class="form-label">Comuna</label>
-                <input type="text" class="form-control" id="inputComuna" placeholder="Ingrese su Comuna"> 
+                <input type="text" class="form-control" id="inputComuna" placeholder="Ingrese su Comuna" required>
+                <div class="valid-feedback">
+                    Ok! 
+                 </div>
+                 <div class="invalid-feedback">
+                   Es necesario llenar el campo  
+                 </div> 
             </div>
  
             <div class="col-4">
@@ -110,13 +170,25 @@
  
             <div class="col-4">
                 <label for="inputcontact" class="form-label">Numero de contacto</label>
-                <input type="text" class="form-control" id="inputcontact" placeholder="Ingrese su Numero de contacto"> 
+                <input type="text" class="form-control" id="inputcontact" placeholder="Ingrese su Numero de contacto" required>
+                <div class="valid-feedback">
+                    Ok! 
+                 </div>
+                 <div class="invalid-feedback">
+                   Es necesario llenar el campo  
+                 </div> 
             </div>
  
             <div class="col-6">
                 <div class="form-check">
-                   <input type="checkbox" id="checkTerms" class="form-check-input">
+                   <input type="checkbox" id="checkTerms" class="form-check-input" required>
                    <label for="checkTerms" class="form-check-label">Acepto los terminos y codiciones </label>
+                   <div class="valid-feedback">
+                    Ok! 
+                 </div>
+                 <div class="invalid-feedback">
+                   Es necesario Aceptar los terminos y codiciones
+                 </div>
                 </div>
             </div>
  
@@ -128,6 +200,27 @@
  
         </form>
     </div>
- 
+ <script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+
+ </script>
 </body>
 </html>
