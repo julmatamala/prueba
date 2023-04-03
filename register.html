@@ -193,11 +193,20 @@
             </div>
  
             <div>
-                <button type="submit" class="btn btn-primary">
-                    registrarse
+                <button  id="btn-abrir-modal" type="submit" class="btn btn-success" >
+                    registrarse 
                 </button>
-            </div>
- 
+
+            <dialog id="modal">
+              <div>
+                Debe llenar los campos
+              </div>
+              <button id="btn-cerrar-modal">
+                Aceptar
+              </button>
+            </dialog>
+          </div>
+
         </form>
     </div>
  <script>
@@ -222,5 +231,19 @@
 })()
 
  </script>
+<script>
+  const btnAbrirModal =
+  document.querySelector("#btn-abrir-modal");
+  const btnCerrarModal =
+  document.querySelector("#btn-cerrar-modal");
+  const modal = 
+  document.querySelector("#modal");
+
+  btnAbrirModal.addEventListener("click",()=>{modal.showModal();} )
+
+  btnCerrarModal.addEventListener("click",()=>{modal.close();} )
+
+</script>
+
 </body>
 </html>

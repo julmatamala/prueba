@@ -4,3 +4,17 @@ background: -webkit-linear-gradient(to right, #96c93d, #00b09b);  /* Chrome 10-2
 background: linear-gradient(to right, #96c93d, #00b09b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
+
+button{
+    background-color: #96c93d;
+    padding: 5px 15px;
+    border-radius: 5px;
+    color:white;
+}
+
+/*modal*/
+#modal::backdrop{
+    background-color:rgba(0, 0, 0, .55);
+    color: white;
+    
+}
