@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <link href="estilos.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="darkmode.js"></script>
 
     <title>elpepe</title>
 </head>
-<body>
+<body id="aboutusbody">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html"><h1>PETSCO</h1></a>
@@ -45,10 +47,9 @@
                     <a class="nav-link" href="carrito.html">Carro de Compras</a>
                   </li>
             </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="¿Qué desea?" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Buscar</button>
-            </form>
+            <button id="darkmode" type="button" class="btn btn-outline-dark" data-toggle="button" aria-pressed="false" autocomplete="off">
+              Night mode
+            </button>
           </div>
         </div>
       </nav>
