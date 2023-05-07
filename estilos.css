@@ -1,9 +1,25 @@
-:root{
-    --bgcolor3: linear-gradient(to right, #96c93d, #00b09b);;
-}
 body{
+    background: linear-gradient(to right, #96c93d, #00b09b);
+}
 
-    background: var(--bgcolor3);
+body.modoOscuro {
+	background: linear-gradient(to right, #000000, #434343);
+    
+}
+
+body.modoOscuro button {
+	background: linear-gradient(to right, #000000, #434343);
+    color: whitesmoke;
+}
+
+#aboutush1.modoOscuro{
+    color: whitesmoke;
+}
+#registro.modoOscuro{
+    color:whitesmoke;
+}
+#bodyCarrito.modoOscuro{
+    color:whitesmoke;
 }
 
 button{
@@ -36,3 +52,7 @@ button{
 #aboutusbody{
     text-align: center;
 }
+
+
+/*ABOUT US*/
+
