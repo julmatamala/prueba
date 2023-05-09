@@ -3,7 +3,7 @@ $(document).ready(function() {
 	$('#cambiarFondo').click(function() {
 		$('body').toggleClass('modoOscuro');
 		$('#aboutush1').toggleClass('modoOscuro');
-		$('#registro').toggleClass('modoOscuro');
+		$('#register').toggleClass('modoOscuro');
 		$('#bodyCarrito').toggleClass('modoOscuro');
 	
 	});
