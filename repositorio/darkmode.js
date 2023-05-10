@@ -5,6 +5,7 @@ $(document).ready(function() {
 		$('#aboutush1').toggleClass('modoOscuro');
 		$('#register').toggleClass('modoOscuro');
 		$('#bodyCarrito').toggleClass('modoOscuro');
+		$('#bodyLogin').toggleClass('modoOscuro');
 	
 	});
 
