@@ -21,7 +21,10 @@ body.modoOscuro button {
 #bodyCarrito.modoOscuro{
     color:whitesmoke;
 }
-
+#bodyLogin.modoOscuro{
+    color:whitesmoke;
+}
+;
 
 button{
     background-color: #96c93d;
@@ -148,13 +151,19 @@ main {
 	background-image: linear-gradient(150deg,
 	 #96c93d, #00b09b);
 	border-radius: 8px;
-	color: #fff;
+	color: #f5f0f0;
 	display: flex;
 	font-size: 18px;
 	padding: 4px;
 	cursor: pointer;
 	transition: .3s;
 
+}
+
+body.modoOscuro .formulario__btn {
+	background-image: linear-gradient(150deg,
+	 #96c93d, #00b09b);
+    color: whitesmoke;
 }
 
 .formulario__btn span{
@@ -206,3 +215,6 @@ background: none;
 span.error{ color: red; font-size: 0.8em; }
 
 /*login*/
+.night-mode label {
+	color: white;
+  }

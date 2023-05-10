@@ -1,33 +1,21 @@
-$(document).ready(function () {
-   
-    $("#basic-form").validate({     
-      rules: {
-        contrasena: {
-            required:true,
-            minlength:8,
-            maxlength:20
-            },
-  
-        email: {
-          required: true,
-          email: true
-        },
-  
-      },
-
-      messages: {
-        email: {
-          required: "Ingrese El email",
-          email: "El correo debe estar en el formato: abc@mail.com"
-        },
-
-        contrasena: {
-            required: "Debe ingresar una contraseña"
-          },
-    },
-
-    errorElement : 'span'
-
+$(document).ready(function() {
+  $('#login-button').on('click', function(event) {
+      event.preventDefault();
+      
+      let username = $('#username-input').val();
+      let password = $('#password-input').val();
+      
+      let emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+      if (!emailRegex.test(username)) {
+          alert('Ingresa un correo electrónico válido');
+          return;
+      }
+      
+      if (password === '') {
+          alert('Ingresa tu contraseña');
+          return;
+      }
+      
+      window.location.href = 'index.html';
   });
-
 });
