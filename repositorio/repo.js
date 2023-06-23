@@ -18,6 +18,11 @@ $(document).ready(function () {
         minlength: 3,
         maxlength: 50,
       },
+      apellido_paterno: {
+        required: true,
+        minlength: 3,
+        maxlength: 50,
+      },
       contrasena: {
         required: true,
         minlength: 8,
@@ -61,6 +66,11 @@ $(document).ready(function () {
       },
       nombre: {
         required: "Por favor ingrese su nombre",
+        minlength: "El nombre debe tener al menos 3 caracteres",
+        maxlength: "El nombre no debe tener más de 50 caracteres",
+      },
+      apellido_paterno: {
+        required: "Por favor ingrese su su apellido_paterno",
         minlength: "El nombre debe tener al menos 3 caracteres",
         maxlength: "El nombre no debe tener más de 50 caracteres",
       },
