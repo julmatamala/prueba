@@ -94,11 +94,16 @@ function eliminarProducto(id) {
   document.getElementById("id_producto_eliminar").value = id;
 }
 
-function editarPersonal(id, nombre, telefono, cargo) {
+function editarPersonal(id, rut, nombre, apellido_paterno, telefono, email, direccion, edad, contraseña) {
   document.getElementById("id_personal_editar").value = id;
+  document.getElementById("rut_editar").value = rut;
   document.getElementById("nombre_editar").value = nombre;
+  document.getElementById("apellido_editar").value = apellido_paterno;
   document.getElementById("telefono_editar").value = telefono;
-  document.getElementById("cargo_editar").value = cargo;
+  document.getElementById("email_editar").value = email;
+  document.getElementById("direccion_editar").value = direccion;
+  document.getElementById("edad_editar").value = edad;
+  document.getElementById("contraseña_editar").value = contraseña;
 }
 
 function eliminarPersonal(id) {

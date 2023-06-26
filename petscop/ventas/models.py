@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Cliente(models.Model):
-    rut = models.CharField(primary_key=True, max_length=10, blank=False)
+    rut = models.CharField(max_length=10, blank=False)
     nombre = models.CharField(max_length=40, blank=False)
     apellido_paterno = models.CharField(max_length=20, blank=False )
     telefono = models.CharField(max_length=9)
@@ -27,8 +27,8 @@ class Producto (models.Model):
         max_length=255, unique=True, null=True, blank=True)
     descripcion = models.CharField(max_length=255, unique=True, null=False)
     imagen = models.ImageField(upload_to='productos', null=True, blank=True)
-    costo = models.DecimalField(max_digits=15, decimal_places=2, null=False)
-    cantidad = models.DecimalField(max_digits=15, decimal_places=2, null=False)
+    costo = models.PositiveIntegerField(default=0, blank=True)
+    cantidad = models.PositiveIntegerField(default=0, blank=True)
 
     class Meta:
         verbose_name = 'producto'
