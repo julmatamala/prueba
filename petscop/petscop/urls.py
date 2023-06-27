@@ -19,10 +19,17 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from petscop.ventas.views import agregar_producto, eliminar_producto, limpiar_carrito, restar_producto
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('ventas.urls')),
     #path('clientes/', include('clientes.urls')),
+    path('agregar/<int:producto_id>/', agregar_producto, name="Add"),
+    path('eliminar/<int:producto_id>/', eliminar_producto, name="Del"),
+    path('restar/<int:producto_id>/', restar_producto, name="Sub"),
+    path('limpiar/', limpiar_carrito, name="CLS"),
 ]
+
 
 urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
