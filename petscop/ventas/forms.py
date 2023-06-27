@@ -48,11 +48,33 @@ class EditarClienteForm(forms.ModelForm):
 class AddProductoForm (forms.ModelForm):
     class Meta:
         model = Producto
-        fields = ( 'codigo', 'descripcion', 'imagen', 'costo', 'cantidad' )
+        fields = ( 'codigo', 'descripcion', 'costo', 'cantidad', 'imagen' )
         labels ={
                 'codigo': 'Codigo: ', 
                 'descripcion': 'Descripcion: ',
-                'imagen': 'Imagen: ' , 
                 'costo': 'Valor: ', 
                 'cantidad': 'Cantidad: ',
-        }        
+                'imagen': 'Imagen: ' , 
+        }  
+
+
+class EditarProductoForm(forms.ModelForm):
+    class Meta:
+        model = Producto
+        fields = ( 'codigo', 'descripcion', 'costo', 'cantidad', 'imagen' )
+        labels ={
+                'codigo': 'Codigo: ', 
+                'descripcion': 'Descripcion: ',
+                'costo': 'Valor $: ', 
+                'cantidad': 'Cantidad: ',
+                'imagen': 'Imagen: ' , 
+        }  
+
+        widgets ={
+                'codigo': forms.TextInput(attrs={'type': 'text', 'id':'codigo_editar'}),
+                'descripcion': forms.TextInput(attrs={'id': 'descripcion_editar'}),
+                'costo': forms.NumberInput(attrs={'id': 'costo_editar'}),
+                'cantidad': forms.NumberInput(attrs={'id': 'cantidad_editar'}),
+                'imagen': forms.TextInput(attrs={'id': 'imagen_editar'}),
+        }
+

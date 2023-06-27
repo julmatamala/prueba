@@ -23,16 +23,15 @@ function editarEquipo(id, area, codigo, descripcion) {
   document.getElementById("descripcion_editar").value = descripcion;
 }
 
-function editarProduct(id, precio, descripcion, costo, cantidad, categoria, servicio) {
+function editarProducto(id, codigo, descripcion, costo, cantidad, imagen) {
   document.getElementById("id_producto_editar").value = id;
-  document.getElementById("precio_editar").value = precio;
+  document.getElementById("codigo_editar").value = codigo;
   document.getElementById("descripcion_editar").value = descripcion;
   document.getElementById("costo_editar").value = costo;
   document.getElementById("cantidad_editar").value = cantidad;
-  document.getElementById("categoria_editar").value = categoria;
-  if (servicio=='True'){
-    document.getElementById('servicio_editar').checked=true;
-  }
+  document.getElementById("imagen_editar").value = imagen;
+
+
 }
 
 function historialPreventivo(id,solicitadoh,supervisado,responsable, subtotalpiezas, subtotalmo, fecha) {
@@ -104,6 +103,15 @@ function editarPersonal(id, rut, nombre, apellido_paterno, telefono, email, dire
   document.getElementById("direccion_editar").value = direccion;
   document.getElementById("edad_editar").value = edad;
   document.getElementById("contraseña_editar").value = contraseña;
+}
+
+function editarProductos(id, codigo, imagen, descripcion, costo, cantidad) {
+  document.getElementById("id_producto_editar").value = id;
+  document.getElementById("codigo_editar").value = codigo;
+    document.getElementById("descripcion_editar").value = descripcion;
+  document.getElementById("costo_editar").value = costo;
+  document.getElementById("cantidad_editar").value = cantidad;
+  document.getElementById("imagen_editar").value = imagen;
 }
 
 function eliminarPersonal(id) {
