@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+
+from petscop.ventas.carrito import Carrito
 from .models import Cliente, Producto, Egreso, ProductosEgreso
 from .forms import AddClienteForm,EditarClienteForm,AddProductoForm, EditarProductoForm
 from django.contrib import messages
@@ -169,3 +171,34 @@ def export_pdf_view(request, id, iva):
     HTML(string=html_template, base_url=request.build_absolute_uri()).write_pdf(target=response, font_config=font_config,stylesheets=[CSS(css_url)])
 
     return response
+
+def carrito(request):
+    productos = Producto.objects.all()
+    return render(request, "carrito.html", {'productos':productos})
+
+def agregar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.agregar(producto)
+    return redirect("carrito.html")
+
+def eliminar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.eliminar(producto)
+    return redirect("carrito.html")
+
+def restar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.restar(producto)
+    return redirect("carrito.html")
+
+def limpiar_carrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect("carrito.html")
+
+
+
+
