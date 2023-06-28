@@ -78,3 +78,13 @@ class EditarProductoForm(forms.ModelForm):
                 'imagen': forms.TextInput(attrs={'id': 'imagen_editar'}),
         }
 
+
+
+class LoginForm(forms.ModelForm):
+    class Meta:
+        model = Cliente
+        fields = ('email',  'contraseña' )
+        labels ={
+                'email': 'E-mail: ', 
+                'contraseña': 'Contraseña: '
+        }

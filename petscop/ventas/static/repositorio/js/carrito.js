@@ -6,26 +6,27 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 1,
             nombre: 'Bolsas',
             precio: 1300,
-            imagen: 'images/bolsa.jpg'
+            imagen: 'static/images/bolsa.jpg'
         },
         {
             id: 2,
             nombre: 'bolso transporta mascota',
             precio: 75000,
-            imagen: 'images/bolsatransporte.jpg'
+            imagen: 'static/images/bolsatransporte.jpg'
         },
         {
             id: 3,
             nombre: 'Arena Santitaria',
             precio: 12500,
-            imagen: 'images/arena.jpg'
+            imagen: 'static/images/arena.jpg'
         },
         {
             id: 4,
             nombre: 'comida De perro',
             precio: 17200,
-            imagen: 'images/comidaperro.jpg'
+            imagen: 'static/images/comidaperro.jpg'
         }
+
 
     ];
 
