@@ -4,61 +4,57 @@ $(document).ready(function () {
     rules: {
       rut: {
         required: true,
-        minlength: 9,
+        minlength: 8,
         maxlength: 10
       },
       edad: {
         required: true,
         number: true,
         min: 18,
-        max: 35
+        max: 99
       },
       nombre: {
         required: true,
         minlength: 3,
-        maxlength: 50,
+        maxlength: 40,
       },
       apellido_paterno: {
         required: true,
         minlength: 3,
-        maxlength: 50,
+        maxlength: 20,
       },
       contrasena: {
         required: true,
         minlength: 8,
         maxlength: 20
       },
-      contrasenaconfirmar: {
-        equalTo: "#contrasena",
-      },
       telefono: {
         required: true,
-        minlength: 9,
-        maxlength: 12,
+        minlength: 8,
+        maxlength: 9,
         number: true
       },
       email: {
         required: true,
         email: true
       },
-      Genenero: {
-        required: true
-      },
       Direccion: {
         required: true,
+        maxlength: 50,
+
       }
     },
     messages: {
       rut: {
         required: "Ingrese El Rut",
-        minlength: "El rut tiene que ser de 9 a 10 dígitos y solo puede contener numeros, letras y guion bajo.",
-        maxlength: "El nombre tiene que ser de 9 a 10 dígitos y solo puede contener numeros, letras y guion bajo."
+        minlength: "El rut tiene que ser de 8 a 10 dígitos y solo puede contener numeros, letras y guion bajo.",
+        maxlength: "El nombre tiene que ser de 8 a 10 dígitos y solo puede contener numeros, letras y guion bajo."
       },
       edad: {
         required: "Ingrese la edad",
         number: "debe ser solo numeros",
         min: "la edad minima es de 18 años",
-        max: "la edad maxima es de 35 años"
+        max: "la edad maxima es de 99 años"
       },
       email: {
         required: "Ingrese El email",
@@ -80,17 +76,13 @@ $(document).ready(function () {
         maxlength: "El numero de celular tiene que ser de 9 a 12 dígitos y solo puede contener numeros",
         number: "El numero de celular tiene que ser de 9 a 12 dígitos y solo puede contener numeros"
       },
-      Genenero: {
-        required: "Debe seleccionar un genero de la lista"
-      },
+
       Direccion: {
-        required: "Debe ingresar su direccion"
+        required: "Debe ingresar su direccion",
+        max: "la direccion solo acepta 50 caracteres"
       },
       contrasena: {
         required: "Debe ingresar una contraseña"
-      },
-      contrasenaconfirmar: {
-        equalTo: "Las contraseña no coiciden"
       },
     },
     errorElement: 'span',

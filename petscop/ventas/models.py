@@ -33,9 +33,12 @@ class Producto (models.Model):
         verbose_name = 'producto'
         verbose_name_plural = 'productos'
         order_with_respect_to = 'descripcion'
+        db_table = 'ventas_producto'
+
 
     def __str__(self):
         return self.descripcion
+    
 
 class Egreso(models.Model):
     fecha_pedido = models.DateField(max_length=255)

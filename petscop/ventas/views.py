@@ -1,14 +1,10 @@
 from django.shortcuts import render, redirect
-
-from petscop.ventas.carrito import Carrito
 from .models import Cliente, Producto, Egreso, ProductosEgreso
 from .forms import AddClienteForm,EditarClienteForm,AddProductoForm, EditarProductoForm
 from django.contrib import messages
 from django.views.generic import ListView
 from django.http import JsonResponse, HttpResponse
-from weasyprint.text.fonts import FontConfiguration
 from django.template.loader import get_template
-from weasyprint import HTML, CSS
 from django.conf import settings
 import os
 # Create your views here.
@@ -82,7 +78,7 @@ def add_producto_view(request):
             try:
                 form.save()
             except:
-                messages(request, "Error al guardar el cliente")    
+                messages(request, "Error al guardar el producto")    
                 return redirect('Productos')
     return redirect('Productos')
 
@@ -105,100 +101,30 @@ def delete_producto_view(request):
 
 
 
-class add_ventas(ListView):
-    template_name = 'add_ventas.html'
-    model = Egreso
+def ofertas(request):
+    return render(request, 'ofertas.html')
 
-    def dispatch(self,request,*args,**kwargs):
-        return super().dispatch(request, *args, **kwargs)
-    """
-    def get_queryset(self):
-        return ProductosPreventivo.objects.filter(
-            preventivo=self.kwargs['id']
-        )
-    """
-    def post(self, request,*ars, **kwargs):
-        data = {}
-        try:
-            action = request.POST['action']
-            if action == 'autocomplete':
-                data = []
-                for i in Producto.objects.filter(descripcion__icontains=request.POST["term"])[0:10]:
-                    item = i.toJSON()
-                    item['value'] = i.descripcion
-                    data.append(item)
-            else:
-                data['error'] = "Ha ocurrido un error"
-        except Exception as e:
-            data['error'] = str(e)
+def index(request):
+    return render(request, 'index.html')
 
-        return JsonResponse(data,safe=False)
+def about_us(request):
+    return render(request, 'aboutus.html')
+
+def register(request):
+    if request.method == 'POST':
+        form = AddClienteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # hacer algo después de guardar los datos del usuario
+    else:
+        form = AddClienteForm()
+    return render(request, 'register.html', {'form': form})
 
 
-def export_pdf_view(request, id, iva):
-    #print(id)
-    template = get_template("ticket.html")
-    #print(id)
-    subtotal = 0 
-    iva_suma = 0 
-
-    venta = Egreso.objects.get(pk=float(id))
-    datos = ProductosEgreso.objects.filter(egreso=venta)
-    for i in datos:
-        subtotal = subtotal + float(i.subtotal)
-        iva_suma = iva_suma + float(i.iva)
-
-    empresa = "Mi empresa S.A. De C.V"
-    context ={
-        'num_ticket': id,
-        'iva': iva,
-        'fecha': venta.fecha_pedido,
-        'cliente': venta.cliente.nombre,
-        'items': datos, 
-        'total': venta.total, 
-        'empresa': empresa,
-        'comentarios': venta.comentarios,
-        'subtotal': subtotal,
-        'iva_suma': iva_suma,
-    }
-    html_template = template.render(context)
-    response = HttpResponse(content_type="application/pdf")
-    response["Content-Disposition"] = "inline; ticket.pdf"
-    css_url = os.path.join(settings.BASE_DIR,'index\static\index\css/bootstrap.min.css')
-    #HTML(string=html_template).write_pdf(target="ticket.pdf", stylesheets=[CSS(css_url)])
-   
-    font_config = FontConfiguration()
-    HTML(string=html_template, base_url=request.build_absolute_uri()).write_pdf(target=response, font_config=font_config,stylesheets=[CSS(css_url)])
-
-    return response
+def login(request):
+    return render(request, 'login.html')
 
 def carrito(request):
-    productos = Producto.objects.all()
-    return render(request, "carrito.html", {'productos':productos})
-
-def agregar_producto(request, producto_id):
-    carrito = Carrito(request)
-    producto = Producto.objects.get(id=producto_id)
-    carrito.agregar(producto)
-    return redirect("carrito.html")
-
-def eliminar_producto(request, producto_id):
-    carrito = Carrito(request)
-    producto = Producto.objects.get(id=producto_id)
-    carrito.eliminar(producto)
-    return redirect("carrito.html")
-
-def restar_producto(request, producto_id):
-    carrito = Carrito(request)
-    producto = Producto.objects.get(id=producto_id)
-    carrito.restar(producto)
-    return redirect("carrito.html")
-
-def limpiar_carrito(request):
-    carrito = Carrito(request)
-    carrito.limpiar()
-    return redirect("carrito.html")
-
-
-
+    return render(request, 'carrito.html')
+    
 

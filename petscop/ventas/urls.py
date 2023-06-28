@@ -1,5 +1,8 @@
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from . import views
+
 urlpatterns = [
     #path('admin/', admin.site.urls),
     path('', views.ventas_view, name='Ventas'),
@@ -13,8 +16,12 @@ urlpatterns = [
     path('edit_producto/', views.edit_producto_view, name='EditProducto'),
     path('delete_producto/', views.delete_producto_view, name='DeleteProducto'),
 
-    path('add_venta/',views.add_ventas.as_view(), name='AddVenta'),
-    path('export/', views.export_pdf_view, name="ExportPDF" ),
-    path('export/<id>/<iva>', views.export_pdf_view, name="ExportPDF" ),
+    
+    path('aboutus/', views.about_us, name='about_us'),
+    path('register/', views.register, name='register'),
+    path('login/', views.login, name='login'),
+    path('carrito/', views.carrito, name='carrito'),
+    path('ofertas/', views.ofertas, name='ofertas'),
 
-]
+
+] 
