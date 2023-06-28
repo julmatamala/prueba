@@ -85,20 +85,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                Productos
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Alimentos</a></li>
-                <li><a class="dropdown-item" href="#">Accesorios</a></li>
-                <li><a class="dropdown-item" href="#">Juguetes</a></li>
-                <li><a class="dropdown-item" href="#">Cuidado e Higiene</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="{% url 'ofertas' %}">Ofertas</a></li>
-              </ul>
-            </li>
 
             <li class="nav-item">
               <a class="nav-link" href="{% url 'about_us' %}">Conócenos</a>
@@ -110,8 +96,15 @@
               <a class="nav-link" href="{% url 'login' %}">Iniciar Sesion</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'carrito' %}">Carro de Compras</a>
+              <a class="nav-link" href="{% url 'Tienda' %}">Productos</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'Clientes' %}">ADMIN Clientes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'Productos' %}">ADMIN Productos</a>
+            </li>
+
           </ul>
           <button id="cambiarFondo" type="button" class="btn btn-outline-dark"
             aria-pressed="false" autocomplete="off">
