@@ -1,17 +1,16 @@
 from django.urls import path
-from django.conf import settings
-from django.conf.urls.static import static
-from . import views
+from .views import home, about_us, login, register, carrito, agregar_producto, listar_productos, modificar_producto, eliminar_producto
 
 urlpatterns = [
-    path('', views.petscop_view, name='Petscop'),
-    path('aboutus/', views.about_us, name='about_us'),
-    path('register/', views.register, name='register'),
-    path('login/', views.login, name='login'),
-    path('carrusel/', views.carusel, name='carrusel'),
-    path('carrito/', views.carrito, name='carrito'),
-
-
+    path('', home, name='home'),
+    path('aboutus/', about_us, name='about_us'),
+    path('register/', register, name='register'),
+    path('login/', login, name='login'),
+    path('carrito/', carrito, name='carrito'),
+    path('agregar-producto/', agregar_producto, name="agregar_producto" ),
+    path('listar-producto/', listar_productos, name="listar_producto" ),
+    path('modificar-producto/<id>/', modificar_producto, name="modificar_producto"),
+    path('eliminar-producto/<id>/', eliminar_producto, name="eliminar_producto"),
 
 
 ] 
