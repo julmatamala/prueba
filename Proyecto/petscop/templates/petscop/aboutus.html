@@ -4,76 +4,59 @@
 {% load static %}
 
 {% block content %}
-<div class="container">
-  <h1 id="aboutush1">¿Quienes somos?</h1>
-  <div class="row">
-    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-      <div class="card" style="width: 18rem;">
-        <img
-          src="https://img.freepik.com/fotos-premium/joven-hombre-negocios-confiado-encabezado-cabeza-gato-traje-negocios-negro-arte-contemporaneo_407348-1930.jpg?w=2000"
-          class="card-img-top" alt="foto julio">
-        <div class="card-body">
-          <p class="card-text">
-
-            <li>Estudiante DUOCUC</li>
-            <li>enacargado del proyecto</li>
-            <li>Serio</li>
-            <li>Precupado por las mascotas</li> </p>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-      <div class="card" style="width: 18rem;">
-        <img
-          src="https://images-ext-2.discordapp.net/external/cPYeXWSKfwci0NBtDhx-QAgRQnwk9kFhQy3Bksb7MjU/https/64.media.tumblr.com/f1e1c6a46bd93c630d21562c6dd331e2/26fe516efc1d49db-75/s640x960/9080e7b7b1078c94017e3e04b14d376be23706ce.jpg"
-          class="card-img-top" alt="fotoDiego">
-        <div class="card-body">
-          <p class="card-text">
-            <li>El Rysu ☆</li>
-            <li>Estudiante DUOCUC</li>
-            <li>Supervisor </li>
-            <li>Amable</li>
-            <li>conciente</li> </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-      <div class="card" style="width: 18rem;">
-        <img
-          src="https://images-ext-2.discordapp.net/external/cPYeXWSKfwci0NBtDhx-QAgRQnwk9kFhQy3Bksb7MjU/https/64.media.tumblr.com/f1e1c6a46bd93c630d21562c6dd331e2/26fe516efc1d49db-75/s640x960/9080e7b7b1078c94017e3e04b14d376be23706ce.jpg"
-          class="card-img-top" alt="fotoDiego">
-        <div class="card-body">
-          <p class="card-text">
-            <li>El Rysu ☆</li>
-            <li>Estudiante DUOCUC</li>
-            <li>Supervisor </li>
-            <li>Amable</li>
-            <li>conciente</li> </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-      <div class="card" style="width: 18rem;">
-        <img
-          src="https://images-ext-2.discordapp.net/external/cPYeXWSKfwci0NBtDhx-QAgRQnwk9kFhQy3Bksb7MjU/https/64.media.tumblr.com/f1e1c6a46bd93c630d21562c6dd331e2/26fe516efc1d49db-75/s640x960/9080e7b7b1078c94017e3e04b14d376be23706ce.jpg"
-          class="card-img-top" alt="fotoDiego">
-        <div class="card-body">
-          <p class="card-text">
-            <li>El Rysu ☆</li>
-            <li>Estudiante DUOCUC</li>
-            <li>Supervisor </li>
-            <li>Amable</li>
-            <li>conciente</li> </p>
-        </div>
-      </div>
-    </div>
-  
-  
+<br><br><br>
+<div id="carouselExampleDark" class="carousel carousel-dark slide">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
-
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="10000">
+      <img src="{% static 'petscop/img/about2.jpg' %}" class="d-block mx-auto" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <div class="card mt-3">
+          <div class="card-body">
+            <h5 class="card-title">First slide label</h5>
+            <p class="card-text">Enter your text here...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="{% static 'petscop/img/about1.jpeg' %}" class="d-block mx-auto" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <div class="card mt-3">
+          <div class="card-body">
+            <h5 class="card-title">Second slide label</h5>
+            <p class="card-text">Enter your text here...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'petscop/img/about3.jpeg' %}" class="d-block mx-auto" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <div class="card mt-3">
+          <div class="card-body">
+            <h5 class="card-title">Third slide label</h5>
+            <p class="card-text">Enter your text here...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>
+
+
+
+
 {% endblock %}

@@ -1,2 +1,81 @@
 admin
 pass1234
+
+acceder a la venv
+& c:/html/examne/myvenv/Scripts/Activate.ps1
+
+validador nombre 
+    def clean_nombre(self):
+        nombre = self.cleaned_data["nombre"]
+        existe = Producto.objects.filter(nombre__iexact=nombre).exists()
+
+        if existe:
+            raise ValidationError("Este nombre ya existe")
+        return nombre
+
+
+
+about_us
+<div class="container">
+  <h1 id="aboutush1">¿Quienes somos?</h1>
+  <hr>
+  <div class="row">
+    <br>
+    <br>
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+      <div class="card" style="width: 18rem;">
+        <img
+          src="{% static 'petscop/img/about1.jpeg' %}"
+          class="card-img-top" alt="foto julio">
+        <div class="card-body">
+          <p class="card-text">
+            <li>Estudiante DUOCUC</li>
+        </div>
+      </div>
+    </div>
+
+
+    <br>
+    <br>
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+      <div class="card" style="width: 18rem;">
+        <img
+        src="{% static 'petscop/img/about2.jpg' %}"
+        class="card-img-top" alt="fotoDiego">
+        <div class="card-body">
+          <p class="card-text">
+            <li>El Rysu ☆</li>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <br>
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+      <div class="card" style="width: 18rem;">
+        <img
+        src="{% static 'petscop/img/about4.jpg' %}"
+        class="card-img-top" alt="fotoDiego">
+        <div class="card-body">
+          <p class="card-text">
+            <li>El Rysu ☆</li>
+
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <br>
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+      <div class="card" style="width: 18rem;">
+        <img
+        src="{% static 'petscop/img/about3.jpeg' %}"
+        class="card-img-top" alt="fotoDiego">
+        <div class="card-body">
+          <p class="card-text">
+            <li>El Rysu ☆</li>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
