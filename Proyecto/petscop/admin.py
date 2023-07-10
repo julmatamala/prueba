@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Marca, Producto
+from .forms import ProductoForm
 
 # Register your models here.
 
@@ -8,7 +9,8 @@ class ProductoAdmin(admin.ModelAdmin):
     list_editable = ["precio"]
     search_fields = ["nombre"]
     list_filter = ["tipo_producto", "marca"]
-    list_per_page= 1
+    list_per_page= 5
+    form = ProductoForm
     
 
 

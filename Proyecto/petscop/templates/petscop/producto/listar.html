@@ -1,5 +1,30 @@
 {% extends 'petscop/base.html' %}
 
+{% block js %}
+
+<script>
+    function eliminarProducto(id){
+        Swal.fire({
+           "title":"¿Estas Seguro?",
+           "text":"esta acción no se puede deshacer",
+           "icon": "question",
+           "showCancelButton":true,
+           "cancelButtonText":"No, Cancelar",
+           "confirmButtonText":"Si, Eliminar",
+           "reverseButtons":true,
+           "confirmButtonColor":"#dc3545"
+            
+        })
+        .then(function(result){
+            if(result.isConfirmed){
+                window.location.href = "/eliminar-producto/"+id+"/"                
+            }
+        })
+    }
+</script>
+
+{% endblock %}
+
 {% block content %}
 {% load humanize %}
 <br>
@@ -17,22 +42,29 @@
                 <th>Opciones</th>
             </tr>
         
-            {% for p in productos %}
+            {% for p in entity %}
         
             <tr>
                  <td>{{ p.nombre | title }}</td>
                  <td>{{ p.precio | intcomma }}</td>
                  <td>{{ p.marca | title }}</td>   
                   <td>
+                    {% if perms.petscop.change_producto %}
                     <a href="{% url 'modificar_producto' p.id %}" class="btn btn-success btn-sm">Modificar</a>
-                    <a href="{% url 'eliminar_producto' p.id %}" class="btn btn-danger btn-sm">Eliminar</a>
-
+                    {% endif %}
+                    {% if perms.petscop.delete_producto %}
+                    <a href="#" onclick="eliminarProducto({{ p.id }})" class="btn btn-danger btn-sm">Eliminar</a>
+                    {% endif %}
                   </td>  
             </tr>
         
             {% endfor %}
         
         </table>
+        <hr>
+        <div>
+            {% include 'petscop/paginator.html' %}
+        </div>
     </div>
 </div>
 
