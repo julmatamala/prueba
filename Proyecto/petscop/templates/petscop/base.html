@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">  
+  {% block css %}
+  {% endblock %}
+  <link href="{% static 'petscop/css/estilos.css' %}" rel="stylesheet">
+
+
+  <link rel="icon" type="image/x-icon"
+  href="{% static 'petscop/img/logo.png'%}"> 
+  <title>PETSCO</title>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'home' %}"><h1>PETSCO</h1></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}">Productos</a>
+            </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'about_us' %}">Conócenos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'carrito' %}">Carro de Compras</a>
+          </li>
+          {% if perms.petscop.add_producto %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'agregar_producto' %}">Agregar Productos</a>
+          </li>
+          {% endif %}
+          {% if perms.petscop.view_producto %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'listar_producto' %}">Lista de Productos</a>
+          </li>
+          {% endif %}
+          {% if user.is_authenticated %}
+          <li class="nav-item">           
+            <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
+          </li>
+          <li class="nav-item float-end">      
+            <a class="nav-link" href="#"><img src="{% static 'petscop/img/asset/person.png'%}" alt="username-icon" style="height: 2rem" />{{ user.username }}</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'registro' %}">Registrarse</a>
+          </li>
+          {% endif %}
+        </ul>
+        
+        <button id="cambiarFondo" type="button" class="btn btn-outline-dark" aria-pressed="false" autocomplete="off">
+          Night mode
+        </button>
+      </div>
+    </div>
+  </nav>
+<div>
+
+ 
+
+  {% block content %}
+
+  
+  {% endblock %}
+
+</div>
+ 
+<br>
+<br>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{% if messages %}
+{% for m in messages %}
+   <script>
+    Swal.fire({
+      "title": "Felicitaciones",
+      "text" : "{{m}}",
+      "icon": "success",
+      "confirmButtonColor":"#1E90FF"
+
+    })
+   </script>
+{% endfor %}
+
+{% endif %}    
+
+{% block js %}
+{% endblock %}
+<hr>
+</body>
+
+</html>
