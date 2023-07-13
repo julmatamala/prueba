@@ -173,7 +173,7 @@ def generarBoleta(request):
     for key, value in request.session['carrito'].items():
         producto = Producto.objects.get(id=value['producto_id'])
         cant = value['cantidad']
-        subtotal = cant * int(value['acumulado'])
+        subtotal = cant * producto.precio
         detalle = detalle_boleta(id_boleta=boleta, id_producto=producto, cantidad=cant, subtotal=subtotal)
         detalle.save()
         productos.append(detalle)
