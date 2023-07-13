@@ -11,17 +11,33 @@ class Carrito:
     
     def agregar(self, producto):
         id = str(producto.id)
+        cantidad_solicitada = 1  # Modifica esto según cómo se determine la cantidad solicitada
+        
         if id not in self.carrito.keys():
+            if cantidad_solicitada > producto.cantidad:
+                # La cantidad solicitada supera la cantidad disponible del producto
+                # Aquí puedes lanzar una excepción, mostrar un mensaje de error, etc.
+                return
+
             self.carrito[id] = {
                 "producto_id": producto.id, 
                 "producto_nombre": producto.nombre,
                 "acumulado": producto.precio,
-                "cantidad": 1
+                "cantidad": cantidad_solicitada
             }
         else:
-            self.carrito[id]["cantidad"] += 1
+            if self.carrito[id]["cantidad"] + cantidad_solicitada > producto.cantidad:
+                # La cantidad solicitada más la cantidad existente en el carrito
+                # supera la cantidad disponible del producto
+                # Aquí puedes lanzar una excepción, mostrar un mensaje de error, etc.
+                return
+
+            self.carrito[id]["cantidad"] += cantidad_solicitada
             self.carrito[id]["acumulado"] += producto.precio
         self.guardar_carrito()
+
+
+        
     
     def guardar_carrito(self):
         self.session["carrito"] = self.carrito

@@ -41,7 +41,7 @@ def about_us(request):
     return render(request, 'petscop/aboutus.html')
 
 @permission_required('petscop.add_producto')
-def agregar_producto(request):
+def agregar_producto_crud(request):
 
     data = {
         'form': ProductoForm()
@@ -159,6 +159,11 @@ def limpiar_carrito(request):
     return redirect("tienda")
 
 def generarBoleta(request):
+    if 'carrito' not in request.session or not request.session['carrito']:
+        # El carrito está vacío, mostrar mensaje de error y redirigir a la página anterior
+        messages.error(request, 'El carrito está vacío')
+        return redirect('tienda')
+
     precio_total = 0
     for key, value in request.session['carrito'].items():
         precio_total += int(value['acumulado'])

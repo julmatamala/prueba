@@ -8,7 +8,7 @@ router.register('producto', ProductoViewset)
 urlpatterns = [
     path('', home, name='home'),
     path('aboutus/', about_us, name='about_us'),
-    path('agregar-producto/', agregar_producto, name="agregar_producto" ),
+    path('agregar-producto_crud/', agregar_producto_crud, name="agregar_producto_crud" ),
     path('listar-producto/', listar_productos, name="listar_producto" ),
     path('modificar-producto/<id>/', modificar_producto, name="modificar_producto"),
     path('eliminar-producto/<id>/', eliminar_producto, name="eliminar_producto"),
