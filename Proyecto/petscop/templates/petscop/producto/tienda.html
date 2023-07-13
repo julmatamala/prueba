@@ -1,0 +1,47 @@
+{% extends "petscop/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<body>
+    <div class="container">
+        <h2> Tienda </h2><br>
+        <div class="row">
+            <div class="col-8">
+                <div class="row" style="padding: 5px 0;">
+                    <div class="col-12">
+                        <div class="row">
+                            {% for productos in productos %}
+                            <div class="col-6">
+                                <div class="card text-center">
+                                    {% if productos.imagen %}
+                                        <img src="{{ productos.imagen.url }}" class="card-img-top mx-productos">
+                                    {% else %}
+                                        <img src="{% static 'img/sinfoto.webp' %}" class="card-img-top mx-productos">
+                                    {% endif %}
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="font-weight:bold;"> Código : {{ productos.id }}</h5>
+                                        <p class="card-text">
+                                            Marca : {{ productos.marca }}<br>
+                                            Cantidad: {{ productos.cantidad }}<br>
+                                            Precio:$ {{ productos.precio }}<br>
+                                        </p>
+                                        <a href="{% url 'Add' productos.id %}" class="btn btn-outline-success">Agregar al carro</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                          </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-4">
+                    {% include "petscop/producto/carrito.html" %}
+                    
+                </div>
+            </div>
+    </div>
+</body>
+{% endblock %}

@@ -1,13 +1,15 @@
 from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Producto
+from .models import Producto, Boleta, detalle_boleta
 from .forms import ProductoForm,CustomUserCreationForm
 from django.contrib import messages
 from django.core.paginator import Paginator
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required, permission_required
 from rest_framework import viewsets
 from .serializers import ProductoSerializer
+from petscop.compra import Carrito
+from django.db.models import F
 
 # Create your views here.
 class ProductoViewset(viewsets.ModelViewSet):
@@ -38,13 +40,8 @@ def home(request):
 def about_us(request):
     return render(request, 'petscop/aboutus.html')
 
-
-
-def carrito(request):
-    return render(request, 'petscop/carrito.html')
-
 @permission_required('petscop.add_producto')
-def agregar_producto(request):
+def agregar_producto_crud(request):
 
     data = {
         'form': ProductoForm()
@@ -124,3 +121,72 @@ def registro(request):
 
 
     return render(request, 'registration/registro.html', data)
+
+def tienda(request):
+    productos = Producto.objects.all()
+    return render(request, "petscop/producto/tienda.html", {'productos':productos})
+
+
+def agregar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    
+    if producto.cantidad is None or producto.cantidad <= 0:
+        # Producto no tiene cantidad disponible
+        # Puedes agregar una lógica adicional, como mostrar un mensaje de error
+        messages.error(request, "No hay stock disponible para este producto.")
+        return redirect("tienda")
+    
+    carrito.agregar(producto)
+    request.session['carrito'][str(producto.id)]['nombre'] = producto.nombre
+    return redirect("tienda")
+
+def eliminar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.eliminar(producto)
+    return redirect("tienda")
+
+def restar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.restar(producto)
+    return redirect("tienda")
+
+def limpiar_carrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect("tienda")
+
+def generarBoleta(request):
+    if 'carrito' not in request.session or not request.session['carrito']:
+        # El carrito está vacío, mostrar mensaje de error y redirigir a la página anterior
+        messages.error(request, 'El carrito está vacío')
+        return redirect('tienda')
+
+    precio_total = 0
+    for key, value in request.session['carrito'].items():
+        precio_total += int(value['acumulado'])
+    boleta = Boleta(total=precio_total)
+    boleta.save()
+    productos = []
+    for key, value in request.session['carrito'].items():
+        producto = Producto.objects.get(id=value['producto_id'])
+        cant = value['cantidad']
+        subtotal = cant * producto.precio
+        detalle = detalle_boleta(id_boleta=boleta, id_producto=producto, cantidad=cant, subtotal=subtotal)
+        detalle.save()
+        productos.append(detalle)
+
+        # Restar la cantidad vendida del atributo "cantidad" del producto
+        Producto.objects.filter(id=producto.id).update(cantidad=F('cantidad') - cant)
+
+    datos = {
+        'productos': productos,
+        'fecha': boleta.fechaCompra,
+        'total': boleta.total
+    }
+    request.session['boleta'] = boleta.id_boleta
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return render(request, 'petscop/producto/detallecarrito.html', datos)
