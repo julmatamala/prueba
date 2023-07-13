@@ -36,7 +36,6 @@ class Carrito:
             self.carrito[id]["acumulado"] += producto.precio
         self.guardar_carrito()
 
-
         
     
     def guardar_carrito(self):
